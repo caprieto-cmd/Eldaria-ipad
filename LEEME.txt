@@ -1,0 +1,10 @@
+ELDARIA PARA IPAD
+
+1. Publica los archivos de esta carpeta juntos en un alojamiento HTTPS (GitHub Pages, Netlify o similar).
+2. Abre la direccion HTTPS en Safari en el iPad.
+3. Usa Compartir > Añadir a pantalla de inicio > Añadir.
+4. Abre Eldaria desde su icono. Despues de una primera carga online, funciona sin conexion.
+
+IMPORTANTE: El HTML abierto directamente desde Archivos no permite instalar la PWA ni activar el modo sin conexion con service worker. El HTML puede ejecutarse localmente en navegadores compatibles, pero para instalarlo se necesita HTTPS.
+
+Los datos se guardan en el almacenamiento local de cada navegador/app y no se sincronizan automaticamente. Exporta la partida desde tu version anterior e importala en la nueva; realiza copias JSON regularmente.
