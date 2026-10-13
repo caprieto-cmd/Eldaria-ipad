@@ -270,27 +270,154 @@
 .mage-sheet-details{display:grid;gap:8px}.mage-sheet-details label{display:grid;gap:4px}.mage-sheet-details input{max-width:100px}
 .eld-player-statblock>.mage-toggle{margin:10px 0;width:auto;padding:9px 12px!important}
 </style><style>
-/* V3: SOLO cabecera y controles en iPad vertical. No cambiar la cinta de iniciativa. */
-@media (orientation: portrait) and (min-width: 600px) and (max-width: 1100px) {
-  .wrap { width:100%; max-width:100%; padding:20px 20px 28px; }
-  .hero { align-items:flex-start; }
-  .hero>.toolbar { display:flex; flex-wrap:wrap; gap:8px; width:100%; }
-  .hero>.toolbar>button { flex:0 1 auto; min-height:42px; white-space:normal; }
-  .eld-main-tabs { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:18px 0 0; }
-  .eld-tabs-center { display:none; }
-  .eld-tabs-left,.eld-tabs-right { display:grid; grid-template-columns:1fr; align-items:stretch; gap:8px; min-width:0; }
-  .eld-main-tabs button { display:block; width:100%; min-height:44px; white-space:normal; overflow-wrap:break-word; font-size:13px; line-height:1.25; padding:9px 8px; }
-  .eld-main-tabs + #combatview > .eld-init-panel { margin-top:14px!important; }
-  .eld-init-panel .eld-initiative-toolbar { display:grid; grid-template-columns:minmax(0,1fr); gap:12px; margin:8px 0 12px!important; min-height:0; }
-  .eld-init-panel .eld-round-display { position:relative; grid-column:1; grid-row:1; left:auto; top:auto; transform:none; justify-self:center; margin:0 auto 2px; z-index:1; }
-  .eld-init-panel .eld-left-zone { grid-column:1; grid-row:2; display:grid; grid-template-rows:auto auto; row-gap:5px; }
-  .eld-init-panel .eld-turn-actions { grid-column:1; grid-row:1; display:flex; justify-content:center; flex-wrap:wrap; padding:0; gap:8px; }
-  .eld-init-panel .eld-turn-actions button { height:auto; min-height:44px; flex:0 1 auto; white-space:normal; }
-  .eld-init-panel .eld-left-zone>.turnmessage { grid-row:2; text-align:center; }
-  .eld-init-panel .eld-enemy-actions { grid-column:1; grid-row:3; display:grid; grid-template-rows:auto auto; gap:6px; padding:0; }
-  .eld-init-panel .eld-enemy-row { grid-row:1; display:flex; justify-content:center; flex-wrap:wrap; gap:8px; }
-  .eld-init-panel .eld-enemy-row>button, .eld-init-panel .eld-enemy-row .eld-more-actions summary { height:auto; min-height:44px; white-space:normal; text-align:center; }
-  .eld-init-panel .eld-enemy-actions>.eld-wave-next { grid-row:2; text-align:center; }
+/* iPad vertical: estructura fluida sin solapamientos ni recortes horizontales.
+   El modo horizontal mantiene intacta su distribución. */
+@media (orientation:portrait) and (min-width:600px) and (max-width:1100px){
+ html,body{max-width:100%;overflow-x:clip}
+ .wrap{width:100%;max-width:100%;padding:18px 20px}
+ .hero{align-items:flex-start}
+ .hero>.toolbar{width:100%;justify-content:flex-start}
+ .eld-main-tabs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin:16px 0 0;z-index:1}
+ .eld-tabs-center{display:none}
+ .eld-tabs-left,.eld-tabs-right{display:grid;grid-template-columns:1fr;gap:8px;min-width:0;align-items:stretch}
+ .eld-main-tabs button{width:100%;min-width:0;min-height:44px;white-space:normal;text-align:center;font-size:13px;padding:9px 7px}
+ .eld-main-tabs + #combatview > .eld-init-panel{margin-top:14px!important}
+ .eld-init-panel{padding:18px 14px 16px!important;min-width:0}
+ .eld-init-panel .eld-initiative-toolbar{display:flex;flex-direction:column;align-items:stretch;gap:12px;margin:0 0 12px!important;min-height:0}
+ .eld-init-panel .eld-round-display{position:static;top:auto;left:auto;transform:none;order:0;align-self:center;width:100px;height:100px;min-width:100px;box-shadow:0 4px 16px #0005}
+ .eld-init-panel .eld-left-zone{display:flex;flex-direction:column;align-items:center;gap:6px;order:1;width:100%;min-width:0}
+ .eld-init-panel .eld-turn-actions{display:flex;justify-content:center;align-items:stretch;gap:8px;flex-wrap:wrap;width:100%}
+ .eld-init-panel .eld-turn-actions button{height:auto;min-height:44px;white-space:normal;flex:0 1 auto}
+ .eld-init-panel .eld-left-zone>.turnmessage{min-height:0;text-align:center}
+ .eld-init-panel .eld-enemy-actions{display:flex;flex-direction:column;align-items:center;gap:6px;order:2;width:100%;min-width:0}
+ .eld-init-panel .eld-enemy-row{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;width:100%;min-width:0}
+ .eld-init-panel .eld-enemy-row>button,.eld-init-panel .eld-enemy-row .eld-more-actions summary{min-height:44px;height:auto;white-space:normal;text-align:center}
+ .eld-init-panel .eld-enemy-actions>.eld-wave-next{text-align:center;max-width:100%;overflow-wrap:anywhere}
+ .eld-init-panel .eld-more-menu{right:0;max-width:calc(100vw - 45px)}
+ .eld-init-panel .initlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:12px;overflow:visible;scroll-snap-type:none;padding:8px 0 14px;max-width:100%;min-width:0}
+ .eld-init-panel .initrow{width:auto;min-width:0;max-width:100%;flex-basis:auto;padding:13px 12px;scroll-snap-align:none}
+ .eld-init-panel .initrow .namerow{min-height:34px}
+ .eld-init-panel .initrow strong{font-size:13px}
+ .eld-init-panel .initrow .sm{white-space:normal}
+ .eld-init-panel .init-hpactions button{font-size:12px;padding:7px 4px}
+ .eld-init-panel .condition-select{max-width:100%}
+ .eld-init-panel .recharge-item{grid-template-columns:22px minmax(0,1fr)}
+ .note,.panel,.sheet,.spellcard{min-width:0;overflow-wrap:break-word}
+ .sheetgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .spellfilters{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .spellfilters input{grid-column:1/-1}
+ #combatview>.layout{min-width:0}
+}
+@media (orientation:portrait) and (min-width:600px) and (max-width:730px){
+ .wrap{padding:12px}
+ .eld-init-panel .initlist{gap:9px}
+ .eld-init-panel .initrow{padding:10px 8px}
+ .eld-init-panel .init-hpactions button{font-size:11px}
+}
+/* Evita desplazamiento horizontal de toda la página en móviles. */
+@media(max-width:599px){
+ html,body{max-width:100%;overflow-x:clip}
+ .eld-init-panel .initlist{max-width:100%;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+ .eld-main-tabs{min-width:0}
+ .eld-init-panel .eld-enemy-row{flex-wrap:wrap}
+}
+</style><style id="ipad-portrait-top-controls-v4">
+@media screen and (orientation: portrait) and (min-width: 700px) and (max-width: 1100px){
+  .eld-init-panel{margin-top:72px!important}
+  .eld-init-panel .eld-initiative-toolbar{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;
+    column-gap:18px;
+    row-gap:8px;
+    align-items:center;
+    margin:26px 0 10px!important;
+    min-height:128px;
+  }
+  .eld-init-panel .eld-left-zone{
+    grid-column:1;
+    grid-row:1;
+    display:grid;
+    grid-template-rows:auto auto;
+    row-gap:8px;
+    align-self:center;
+  }
+  .eld-init-panel .eld-turn-actions{
+    display:flex!important;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    max-width:220px;
+    padding:0!important;
+    margin-left:auto;
+  }
+  .eld-init-panel .eld-turn-actions button{
+    width:100%;
+    min-height:44px;
+    height:auto;
+    white-space:normal;
+    text-align:center;
+  }
+  .eld-init-panel .eld-left-zone > .turnmessage{
+    text-align:center;
+    max-width:220px;
+    margin-left:auto!important;
+  }
+  .eld-init-panel .eld-round-display{
+    position:absolute;
+    top:-56px;
+    left:50%;
+    transform:translateX(-50%);
+    width:112px;
+    height:112px;
+    min-width:112px;
+    z-index:4;
+  }
+  .eld-init-panel .eld-enemy-actions{
+    grid-column:3;
+    grid-row:1;
+    display:grid!important;
+    grid-template-rows:auto auto;
+    row-gap:8px;
+    align-items:center;
+    justify-items:start;
+    padding:0!important;
+    min-width:0;
+  }
+  .eld-init-panel .eld-enemy-row{
+    display:flex!important;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    max-width:220px;
+    min-width:0;
+  }
+  .eld-init-panel .eld-enemy-row > button,
+  .eld-init-panel .eld-enemy-row .eld-more-actions{
+    width:100%;
+  }
+  .eld-init-panel .eld-enemy-row .eld-more-actions summary,
+  .eld-init-panel .eld-enemy-row > button{
+    width:100%;
+    min-height:44px;
+    height:auto;
+    white-space:normal;
+    text-align:center;
+    justify-content:center;
+  }
+  .eld-init-panel .eld-enemy-actions > .eld-wave-next{
+    width:100%;
+    max-width:220px;
+    text-align:center;
+    margin:0!important;
+  }
+  .eld-init-panel .eld-more-menu{
+    right:0;
+    left:auto;
+  }
 }
 </style></head><body><div class="wrap"><header class="hero"><div><div class="eyebrow">SALÓN DEL TRONO · ELDARIA</div><h1>La caída del salvador</h1><div class="sub">Panel del DM · Combate por oleadas · 5 aventureros nivel 10</div></div><div class="toolbar"><button onclick="exportState()">Exportar partida</button><button onclick="document.getElementById('importfile').click()">Importar partida</button><input id="importfile" type="file" accept="application/json" hidden onchange="importState(event)"><button class="red" onclick="resetState()">Reiniciar todo</button></div></header>
 <nav class="tabs eld-main-tabs" aria-label="Secciones de Eldaria"><div class="eld-tabs-left"><button id="tab-combat" class="active" onclick="switchTab('combat')">⚔️ Combate e iniciativa</button><button id="tab-spells" onclick="switchTab('spells')">📚 Biblioteca de conjuros</button></div><div class="eld-tabs-center" aria-hidden="true"></div><div class="eld-tabs-right"><button id="tab-sheets" onclick="switchTab('sheets')">📜 Hojas de personajes</button><button id="tab-monsters" onclick="switchTab('monsters')">🛡️ Hojas de enemigos</button></div></nav><div id="combatview"><section class="panel eld-init-panel" style="margin-top:70px"><div class="eld-initiative-toolbar"><div class="eld-left-zone"><div class="eld-turn-actions"><button class="primary" onclick="nextInitiative()">Siguiente turno →</button><button onclick="previousInitiative()">← Turno anterior</button></div><div class="turnmessage" id="currentturn">Configura las iniciativas para comenzar.</div></div><div class="eld-round-display" aria-label="Ronda actual"><span>RONDA</span><strong id="roundhero">1</strong></div><div class="eld-enemy-actions"><div class="eld-enemy-row"><button class="primary" onclick="rollEnemyInitiatives(false)">🎲 Iniciativa enemiga</button><button onclick="addWave()">＋ Oleada sugerida</button><details class="eld-more-actions"><summary>⚙ Más opciones</summary><div class="eld-more-menu"><div class="eld-add-enemy"><select id="enemytype" aria-label="Tipo de enemigo para añadir"></select><button onclick="addEnemy()">＋ Añadir</button></div><button class="eld-clean-fallen" onclick="removeDefeated()" title="Retirar soldados devotos con 0 PG que no hayan sido resucitados">🧹 Limpiar caídos</button></div></details></div><div id="eld-next-wave" class="eld-wave-next" aria-live="polite"></div></div></div><div class="initlist" id="initlist"></div><div id="eldaria-active-stat" class="eldaria-active-stat" aria-live="polite"></div><div class="note">Introduce manualmente la iniciativa de los PJ. «Tirar iniciativas enemigas» lanza 1d20 + Destreza por el Rey de Eldaria, los dos soberanos y todas las tropas, sin cambiar a los jugadores. Los refuerzos nuevos se tiran automáticamente una vez hayas usado el generador. La tira rota visualmente para situar al combatiente activo a la izquierda. Cada tarjeta contiene PG actuales, cantidad de daño o cura y botones para aplicarla. El círculo solo muestra la iniciativa. Las iniciativas se ordenan automáticamente de mayor a menor; los empates conservan su orden. «Siguiente turno» avanza la ronda al completar el orden, y conserva el registro al exportar la partida. Puedes excluir temporalmente una unidad del orden con el botón «×» sin borrar sus PG. «Limpiar caídos» retira solamente soldados devotos con 0 PG que no hayan sido resucitados.</div></section><section class="panel" id="quick-enemy-panel"><div class="flex between"><h2>⚔️ Daño rápido · Personajes y enemigos</h2><span class="pill">PG sincronizados con iniciativa</span></div><div class="muted">Controla los PG, el daño recibido y la CA de jugadores y enemigos sin desplazarte por la tira de turnos. Los cambios se sincronizan con la iniciativa.</div><div id="quickenemygrid" class="quick-groups"></div></section><section class="panel conditions-reference"><div class="flex between"><h2>📖 Condiciones · consulta rápida (D&D 5e 2014)</h2><span class="pill">Haz clic para ver el efecto</span></div><div class="condition-guide" id="conditionguide"></div><p class="muted" style="margin:10px 0 0">Una criatura puede tener varias condiciones. Se marcan y retiran manualmente desde su tarjeta de iniciativa; la guía no modifica valores de forma automática. El agotamiento se registra como indicador, y sus niveles se administran manualmente.</p></section><div class="layout"><main class="column"><section class="panel"><div class="flex between"><h2>Personajes jugadores</h2><span class="pill">Vida editable</span></div><div id="players"></div><div class="topgap"><button class="small" onclick="addPlayer()">＋ Añadir jugador</button></div><div class="note">Escribe los PG máximos reales de cada personaje. Usa daño y curación para modificar la vida sin perder el máximo. Puedes anotar PG temporales por separado.</div></section><section class="panel"><h2>Soberanos</h2><div id="bosses"></div></section></main><aside class="column"><section class="panel"><h2>Escudo de la Devoción</h2><div class="shield"><div class="muted">Reducción de daño del Rey de Eldaria <strong>por instancia de daño</strong></div><div class="shieldbig value" id="shieldnum">0</div><div class="muted" id="shieldexplain">3 por soldado fiel vivo, máximo 12</div><div class="divider"></div><label class="checkline"><input id="shieldoff" type="checkbox" onchange="setShieldOff(this.checked)"> Ritual interrumpido: desactivar el escudo y resurrecciones</label><div class="note" style="margin-top:9px">Solo cuentan los soldados devotos vivos, conscientes y aún fieles. Los demás enemigos no aumentan la protección.</div></div><div class="formrow"><label>Daño bruto contra el lich <input id="incoming" type="number" min="0" value="25" oninput="calcPreview()"></label></div><div class="flex topgap"><span class="muted" id="dmgpreview">Daño final: 13 PG</span><button class="small primary" onclick="applyPreview()">Aplicar daño final al rey</button></div></section><section class="panel"><h2>Reglas rápidas</h2><div class="muted"><p><strong style="color:var(--txt)">Escudo:</strong> 3 puntos de reducción por soldado devoto consciente y fiel, máximo 12 por impacto.</p><p><strong style="color:var(--txt)">Levantaos, fieles míos:</strong> 2 acciones legendarias, una vez por ronda. Hasta 2 soldados caídos recuperan 6 PG; máximo 4 resurrecciones en todo el combate. No pueden reaccionar hasta su siguiente turno.</p><p><strong style="color:var(--txt)">Captura coordinada:</strong> con dos soldados, el segundo puede usar su acción para convertir un agarre en Apresado (salvación de FUE CD 15) y arrastrar a la víctima hacia un ejecutor. Marca Agarrado/Apresado manualmente en la iniciativa.</p><p><strong style="color:var(--txt)">Duda:</strong> un soldado puede perder su fe y deja de alimentar el escudo. Marca «Fe» en su tarjeta para reflejarlo.</p><p><strong style="color:var(--txt)">Daño contra el rey:</strong> la vista previa aplica el escudo, pero no calcula resistencias, salvaciones ni otros efectos. Ajusta el daño bruto previamente si corresponde.</p></div><div class="divider"></div><div class="flex between"><div><strong>Resurrecciones utilizadas</strong><div class="muted">Límite: 4 soldados</div></div><div class="counter"><button onclick="changeRev(-1)">−</button><b id="revcount">0 / 4</b><button onclick="changeRev(1)">+</button></div></div><button class="primary topgap" onclick="reviveSoldiers()">Resucitar hasta 2 soldados</button><div class="note">Esta acción registra automáticamente las resurrecciones y recupera 6 PG a los dos primeros soldados caídos elegibles.</div></section></aside></div></div><div id="sheetsview" style="display:none"><section class="panel"><div class="flex between"><h2>Hojas de personajes</h2><span class="pill">PG, CA y conjuros</span></div><div class="note">Edita nombres, CA, PG máximos, clases, niveles y subclases aquí. Los cambios se sincronizan con la iniciativa y el combate; los PG actuales no se restablecen.</div><div class="flex topgap"><button class="primary" onclick="addPlayer()">＋ Añadir personaje jugador</button></div><div id="sheetsplayers" class="sheetgrid" style="margin-top:16px"></div></section></div><div id="monstersview" style="display:none"><section class="panel"><div class="flex between"><h2>Hojas de enemigos</h2><span class="pill">Consulta rápida</span></div><nav class="tabs subtabs" aria-label="Tipos de enemigos"><button id="subtab-soldiers" class="active" onclick="switchMonsterTab('soldiers')">⚔️ Soldados y constructos</button><button id="subtab-sovereigns" onclick="switchMonsterTab('sovereigns')">👑 Soberanos</button></nav><div id="sheetsmonsters" class="sheetgrid"></div></section></div><footer>Los datos se guardan automáticamente en este navegador mientras se conserve su almacenamiento local. Usa «Exportar partida» como respaldo entre dispositivos.</footer></div><div id="spellsview" style="display:none"><section class="panel"><div class="flex between"><h2>📚 Biblioteca de conjuros · D&D 5e (2014)</h2><span class="pill" id="spellcount"></span></div><p class="muted">Búsqueda local sin conexión. Los efectos son resúmenes de consulta, no sustituyen el texto completo de los libros. PHB = Player’s Handbook; XGE = Xanathar; TCE = Tasha. La biblioteca reúne una selección amplia de conjuros frecuentes, no un índice exhaustivo.</p><div class="spellfilters"><input id="spellquery" type="search" placeholder="Buscar por nombre o efecto (p. ej. Fireball, curación, fuerza…)" oninput="renderSpellLibrary()"><select id="spellclass" onchange="renderSpellLibrary()"><option value="">Todas las clases</option></select><select id="spelllevel" onchange="renderSpellLibrary()"><option value="">Todos los niveles</option><option value="0">Trucos</option></select><select id="spellsource" onchange="renderSpellLibrary()"><option value="">Todos los libros</option><option value="PHB">Player’s Handbook</option><option value="XGE">Xanathar</option><option value="TCE">Tasha</option></select></div><div id="spellresults" class="spellresults"></div></section></div><script>
