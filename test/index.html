@@ -269,44 +269,65 @@
 .mage-sheet{border:1px solid #4a5270;border-radius:10px;padding:10px;margin:12px 0;display:grid;gap:8px}
 .mage-sheet-details{display:grid;gap:8px}.mage-sheet-details label{display:grid;gap:4px}.mage-sheet-details input{max-width:100px}
 .eld-player-statblock>.mage-toggle{margin:10px 0;width:auto;padding:9px 12px!important}
-</style><style id="ipad-portrait-top-controls-v6">
+</style><style id="ipad-portrait-tabs-topbar-v7">
 @media screen and (orientation: portrait) and (min-width: 700px) and (max-width: 1024px){
-  /* Ajuste fino solo para iPad vertical: ordenar la franja superior sin tocar la cinta. */
-  .eld-main-tabs + #combatview > .eld-init-panel{margin-top:24px!important;}
+  /* Pestañas superiores: ambos lados en fila, congruentes. */
+  .eld-main-tabs{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 104px minmax(0,1fr)!important;
+    gap:10px!important;
+    align-items:center!important;
+    margin:12px 0 0!important;
+  }
+  .eld-tabs-left,
+  .eld-tabs-right{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px!important;
+    min-width:0;
+  }
+  .eld-tabs-left{grid-column:1;}
+  .eld-tabs-right{grid-column:3;}
+  .eld-tabs-center{grid-column:2;min-width:0;}
+  .eld-main-tabs button{
+    width:100%;
+    min-width:0;
+    min-height:40px!important;
+    padding:8px 10px!important;
+    font-size:12px!important;
+    line-height:1.15!important;
+    white-space:normal!important;
+    text-align:center;
+  }
+  .eld-main-tabs + #combatview>.eld-init-panel{margin-top:22px!important;}
+
+  /* Franja superior de combate: compacta y ordenada, sin tocar la cinta. */
   .eld-init-panel .eld-initiative-toolbar{
     display:grid!important;
-    grid-template-columns:minmax(0,1fr) 106px minmax(0,1fr)!important;
+    grid-template-columns:minmax(0,1fr) 96px minmax(0,1fr)!important;
     align-items:start!important;
-    column-gap:14px!important;
+    column-gap:10px!important;
     row-gap:6px!important;
-    margin:10px 0 8px!important;
+    margin:8px 0 6px!important;
     min-height:0!important;
   }
   .eld-init-panel .eld-left-zone,
   .eld-init-panel .eld-enemy-actions{
     display:grid!important;
     grid-template-rows:auto auto;
-    row-gap:6px;
-    min-width:0;
+    row-gap:4px;
     align-items:start;
+    min-width:0;
   }
-  .eld-init-panel .eld-left-zone{
-    grid-column:1;
-    grid-row:1;
-    justify-items:start;
-  }
-  .eld-init-panel .eld-enemy-actions{
-    grid-column:3;
-    grid-row:1;
-    justify-items:end;
-    padding:0!important;
-  }
+  .eld-init-panel .eld-left-zone{grid-column:1;grid-row:1;justify-items:start;}
+  .eld-init-panel .eld-enemy-actions{grid-column:3;grid-row:1;justify-items:end;padding:0!important;}
+
   .eld-init-panel .eld-turn-actions{
     display:grid!important;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:8px!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:6px!important;
     width:100%;
-    max-width:250px;
+    max-width:252px;
     padding:0!important;
     margin:0!important;
   }
@@ -315,70 +336,74 @@
     min-width:0;
     font-size:11px!important;
     line-height:1.1!important;
-    padding:7px 8px!important;
-    min-height:36px!important;
-    height:36px!important;
+    padding:6px 7px!important;
+    min-height:34px!important;
+    height:34px!important;
     white-space:nowrap!important;
     text-align:center;
   }
   .eld-init-panel .eld-left-zone > .turnmessage{
     margin:0!important;
     width:100%;
-    max-width:250px;
+    max-width:252px;
     min-height:0!important;
     font-size:11px!important;
-    line-height:1.25!important;
+    line-height:1.2!important;
     text-align:left!important;
   }
+
   .eld-init-panel .eld-round-display{
     position:absolute!important;
-    top:-48px!important;
+    top:-46px!important;
     left:50%!important;
     transform:translateX(-50%)!important;
-    width:96px!important;
-    height:96px!important;
-    min-width:96px!important;
+    width:92px!important;
+    height:92px!important;
+    min-width:92px!important;
     z-index:4!important;
   }
-  .eld-init-panel .eld-round-display span{font-size:10px!important;letter-spacing:2px!important;}
-  .eld-init-panel .eld-round-display strong{font-size:40px!important;}
+  .eld-init-panel .eld-round-display span{font-size:10px!important;letter-spacing:1.8px!important;}
+  .eld-init-panel .eld-round-display strong{font-size:38px!important;}
+
   .eld-init-panel .eld-enemy-row{
     display:grid!important;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:8px!important;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:6px!important;
     width:100%;
-    max-width:348px;
+    max-width:330px;
     min-width:0;
     margin:0!important;
+    justify-items:stretch;
   }
   .eld-init-panel .eld-enemy-row > button,
-  .eld-init-panel .eld-enemy-row .eld-more-actions{
+  .eld-init-panel .eld-enemy-row .eld-more-actions,
+  .eld-init-panel .eld-enemy-row .eld-more-actions summary{
     width:100%;
     min-width:0;
   }
   .eld-init-panel .eld-enemy-row > button,
   .eld-init-panel .eld-enemy-row .eld-more-actions summary{
-    width:100%;
-    min-width:0;
-    font-size:10px!important;
-    line-height:1.1!important;
-    padding:7px 6px!important;
-    min-height:36px!important;
-    height:36px!important;
-    white-space:nowrap!important;
-    text-align:center;
-    margin:0!important;
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:9px!important;
+    line-height:1.05!important;
+    padding:5px 6px!important;
+    min-height:34px!important;
+    height:34px!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+    text-align:center;
+    margin:0!important;
   }
   .eld-init-panel .eld-enemy-actions > .eld-wave-next{
     margin:0!important;
     width:100%;
-    max-width:348px;
+    max-width:330px;
     min-height:0!important;
     font-size:11px!important;
-    line-height:1.25!important;
+    line-height:1.2!important;
     text-align:right!important;
   }
   .eld-init-panel .eld-more-menu{right:0;left:auto;}
