@@ -269,56 +269,66 @@
 .mage-sheet{border:1px solid #4a5270;border-radius:10px;padding:10px;margin:12px 0;display:grid;gap:8px}
 .mage-sheet-details{display:grid;gap:8px}.mage-sheet-details label{display:grid;gap:4px}.mage-sheet-details input{max-width:100px}
 .eld-player-statblock>.mage-toggle{margin:10px 0;width:auto;padding:9px 12px!important}
-</style><style id="ipad-portrait-top-controls-v5">
+</style><style id="ipad-portrait-top-controls-v6">
 @media screen and (orientation: portrait) and (min-width: 700px) and (max-width: 1024px){
-  /* Solo reordena la franja superior en iPad vertical. No toca la cinta de iniciativa. */
-  .eld-main-tabs + #combatview > .eld-init-panel{margin-top:22px!important;}
+  /* Ajuste fino solo para iPad vertical: ordenar la franja superior sin tocar la cinta. */
+  .eld-main-tabs + #combatview > .eld-init-panel{margin-top:24px!important;}
   .eld-init-panel .eld-initiative-toolbar{
     display:grid!important;
-    grid-template-columns:minmax(0,1fr) 108px minmax(0,1fr)!important;
+    grid-template-columns:minmax(0,1fr) 106px minmax(0,1fr)!important;
     align-items:start!important;
-    column-gap:10px!important;
-    row-gap:4px!important;
-    margin:8px 0 6px!important;
+    column-gap:14px!important;
+    row-gap:6px!important;
+    margin:10px 0 8px!important;
     min-height:0!important;
+  }
+  .eld-init-panel .eld-left-zone,
+  .eld-init-panel .eld-enemy-actions{
+    display:grid!important;
+    grid-template-rows:auto auto;
+    row-gap:6px;
+    min-width:0;
+    align-items:start;
   }
   .eld-init-panel .eld-left-zone{
     grid-column:1;
     grid-row:1;
-    display:grid;
-    grid-template-rows:auto auto;
-    row-gap:4px;
     justify-items:start;
-    align-items:start;
-    min-width:0;
+  }
+  .eld-init-panel .eld-enemy-actions{
+    grid-column:3;
+    grid-row:1;
+    justify-items:end;
+    padding:0!important;
   }
   .eld-init-panel .eld-turn-actions{
-    display:flex!important;
-    flex-direction:row!important;
-    flex-wrap:nowrap!important;
-    justify-content:flex-start!important;
-    align-items:stretch!important;
-    gap:6px!important;
-    padding:0!important;
-    min-width:0;
+    display:grid!important;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:8px!important;
     width:100%;
+    max-width:250px;
+    padding:0!important;
+    margin:0!important;
   }
   .eld-init-panel .eld-turn-actions button{
+    width:100%;
+    min-width:0;
     font-size:11px!important;
-    line-height:1.15!important;
+    line-height:1.1!important;
     padding:7px 8px!important;
-    min-height:34px!important;
-    height:34px!important;
+    min-height:36px!important;
+    height:36px!important;
     white-space:nowrap!important;
-    flex:0 1 auto;
+    text-align:center;
   }
   .eld-init-panel .eld-left-zone > .turnmessage{
     margin:0!important;
+    width:100%;
+    max-width:250px;
+    min-height:0!important;
     font-size:11px!important;
     line-height:1.25!important;
     text-align:left!important;
-    min-height:0!important;
-    width:100%;
   }
   .eld-init-panel .eld-round-display{
     position:absolute!important;
@@ -332,46 +342,44 @@
   }
   .eld-init-panel .eld-round-display span{font-size:10px!important;letter-spacing:2px!important;}
   .eld-init-panel .eld-round-display strong{font-size:40px!important;}
-  .eld-init-panel .eld-enemy-actions{
-    grid-column:3;
-    grid-row:1;
-    display:grid!important;
-    grid-template-rows:auto auto;
-    row-gap:4px;
-    justify-items:end;
-    align-items:start;
-    padding:0!important;
-    min-width:0;
-  }
   .eld-init-panel .eld-enemy-row{
-    display:flex!important;
-    flex-direction:row!important;
-    flex-wrap:nowrap!important;
-    justify-content:flex-end!important;
-    align-items:stretch!important;
-    gap:6px!important;
-    min-width:0;
+    display:grid!important;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:8px!important;
     width:100%;
+    max-width:348px;
+    min-width:0;
+    margin:0!important;
+  }
+  .eld-init-panel .eld-enemy-row > button,
+  .eld-init-panel .eld-enemy-row .eld-more-actions{
+    width:100%;
+    min-width:0;
   }
   .eld-init-panel .eld-enemy-row > button,
   .eld-init-panel .eld-enemy-row .eld-more-actions summary{
+    width:100%;
+    min-width:0;
     font-size:10px!important;
     line-height:1.1!important;
-    padding:7px 7px!important;
-    min-height:34px!important;
-    height:34px!important;
+    padding:7px 6px!important;
+    min-height:36px!important;
+    height:36px!important;
     white-space:nowrap!important;
+    text-align:center;
     margin:0!important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
-  .eld-init-panel .eld-enemy-row > button{flex:0 1 auto;}
-  .eld-init-panel .eld-enemy-row .eld-more-actions{flex:0 0 auto;}
   .eld-init-panel .eld-enemy-actions > .eld-wave-next{
     margin:0!important;
     width:100%;
+    max-width:348px;
+    min-height:0!important;
     font-size:11px!important;
     line-height:1.25!important;
     text-align:right!important;
-    min-height:0!important;
   }
   .eld-init-panel .eld-more-menu{right:0;left:auto;}
 }
